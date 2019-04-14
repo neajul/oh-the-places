@@ -15,31 +15,51 @@
         <link rel="stylesheet" href="css/main.css">
     </head>
     <body>
-
+      <div class="wrapper">
         <div class="fullscreenBg" id="videoPlayer">
-            <img src="img/logo_v2.png">
-            <video muted autoplay class="fullscreenBgVideo" poster="img/logo_v2.png">
-                <source src="vid/0_black_1.mp4" type="video/mp4">
-            </video>
-            <div class="videoPlaylist">
-                <a href="vid/01.mp4" class="current-video"></a>
-                <a href="vid/02.mp4"></a>
-                <a href="vid/03.mp4"></a>
-                <a href="vid/04.mp4"></a>
-                <a href="vid/05.mp4"></a>
-                <a href="vid/06.mp4"></a>
-                <a href="vid/07.mp4"></a>
-                <a href="vid/08.mp4"></a>
-                <a href="vid/09.mp4"></a>
-                <a href="vid/10.mp4"></a>
-                <a href="vid/11.mp4"></a>
-                <a href="vid/12.mp4"></a>
-                <a href="vid/13.mp4"></a>
-                <a href="vid/14.mp4"></a>
-                <a href="vid/15.mp4"></a>
-                <a href="vid/16.mp4"></a>
-                <a href="vid/17.mp4"></a>
-            </div>
+          <!-- <img src="img/logo_v2.png"> -->
+          <!-- <video muted autoplay class="fullscreenBgVideo" poster="img/logo_v2.png"> -->
+          <video muted autoplay class="fullscreenBgVideo">
+              <source src="vidblack/0_black_1.mp4" type="video/mp4">
+          </video>
+          <div class="videoPlaylist">
+              <a href="vidblack/01.mp4" class="current-video"></a>
+              <a href="vidblack/02.mp4"></a>
+              <a href="vidblack/03.mp4"></a>
+              <a href="vidblack/04.mp4"></a>
+              <a href="vidblack/05.mp4"></a>
+              <a href="vidblack/06.mp4"></a>
+              <a href="vidblack/07.mp4"></a>
+              <a href="vidblack/08.mp4"></a>
+              <a href="vidblack/09.mp4"></a>
+              <a href="vidblack/10.mp4"></a>
+              <a href="vidblack/11.mp4"></a>
+              <a href="vidblack/12.mp4"></a>
+              <a href="vidblack/13.mp4"></a>
+              <a href="vidblack/14.mp4"></a>
+              <a href="vidblack/15.mp4"></a>
+              <a href="vidblack/16.mp4"></a>
+              <a href="vidblack/17.mp4"></a>
+          </div>
+          <!-- <div class="videoPlaylist">
+              <a href="vid/01.mp4" class="current-video"></a>
+              <a href="vid/02.mp4"></a>
+              <a href="vid/03.mp4"></a>
+              <a href="vid/04.mp4"></a>
+              <a href="vid/05.mp4"></a>
+              <a href="vid/06.mp4"></a>
+              <a href="vid/07.mp4"></a>
+              <a href="vid/08.mp4"></a>
+              <a href="vid/09.mp4"></a>
+              <a href="vid/10.mp4"></a>
+              <a href="vid/11.mp4"></a>
+              <a href="vid/12.mp4"></a>
+              <a href="vid/13.mp4"></a>
+              <a href="vid/14.mp4"></a>
+              <a href="vid/15.mp4"></a>
+              <a href="vid/16.mp4"></a>
+              <a href="vid/17.mp4"></a>
+          </div> -->
         </div>
 
         <audio id="audioplayer">
@@ -48,13 +68,29 @@
 
         <div id="logoContainer">
           <!-- <img src="img/logo_v2_transp.png"> -->
-          <img src="img/logo_v3.svg">
-        </div>
+          <div class="logoContainer top-bar">
 
-        <script src="js/vendor/modernizr-3.5.0.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>')</script>
-        <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
+
+            <div class="logoContainer info name">
+              <span><a href="https://lukasengelhardt.net" target="_blank">Lukas Engelhardt</a> & <a href="https://soundcloud.com/danielcherney" target="_blank">Daniel Cherney</a></span>
+            </div>
+            <div class="logoContainer info title">
+              <span>Oh, The Placed You'd Go</span>
+            </div>
+          </div>
+          <img src="img/logo_v3b.svg">
+          <div class="logoContainer bottom-bar">
+            <div class="logoContainer info click">
+              <span>Click anywhere to begin</span>
+            </div>
+          </div>
+        </div>
+      </wrapper>
+
+      <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+      <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+      <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>')</script>
+      <script src="js/plugins.js"></script>
+      <script src="js/main.js"></script>
     </body>
 </html>
