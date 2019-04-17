@@ -67,7 +67,7 @@ a:hover{
     left: 0;
     /* overflow: hidden; */
     z-index: -100;
-    background-color: #D1D0D1;
+    background-color: black;
     /* background: url("../img/logo_v2.png");
     background-size: cover;
     background-repeat: no-repeat;
@@ -75,7 +75,7 @@ a:hover{
 }
 
 .fullscreenBg > video {
-  background-color: #D1D0D1;
+  background-color: black;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -116,7 +116,7 @@ a:hover{
 
 #logoContainer {
   /* background-color: #D1D0D1; */
-  background-image: url("../img/bg1.png");
+  /* background-image: url("../img/bg1.png"); */
   background-size: cover;
   background-position: center;
   width: 100%;
@@ -159,6 +159,26 @@ a:hover{
   text-align: center;
   animation: blinker 4s linear infinite;
 
+}
+.vimeo-wrapper {
+  position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   z-index: -1;
+   pointer-events: none;
+   overflow: hidden;
+}
+.vimeo-wrapper iframe {
+   width: 100vw;
+   height: 56.25vw; /* Given a 16:9 aspect ratio, 9/16*100 = 56.25 */
+   min-height: 100vh;
+   min-width: 177.77vh; /* Given a 16:9 aspect ratio, 16/9*100 = 177.77 */
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
 }
 @keyframes blinker {
   50% {

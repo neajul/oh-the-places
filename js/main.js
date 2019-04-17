@@ -77,7 +77,7 @@ function videoPlayerFunction() {
 		playlist = videoPlayer.getElementsByClassName( 'videoPlaylist' )[0],
 		source = video.getElementsByTagName( 'source' ),
 		linkList = [],
-		videoDirectory = 'vid/',
+		videoDirectory = 'vidblack/',
 		currentVideo = getCurrentVideoIndex( ),
 		i, filename;
 	var allLinks = playlist.children; // shuffle(playlist.children);
