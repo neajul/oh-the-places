@@ -1,107 +1,108 @@
-//when document is ready, stop everything and add control to logo
+var iframe;
+var player;
+var droneVids = [
+	// 304825753,
+	// 304824842,
+	// 304824964,
+	// 304824270,
+	// 304824383,
+	// 304824166,
+	// 304824656,
+	// 304827969,
+	304824436,
+	// 304824497,
+	// 304824580,
+	304824114,
+	// 304828072,
+	// 304825095,
+	// 304823871,
+	// 304823989,
+	// 304825196
+]
+var vidCounter = 0;
+
+//when ready
 $( document ).ready(function() {
-	//pause background video
-	$('.fullscreenBgVideo').trigger('pause');
-	// on click of the logo, start..
-	$('#logoContainer').click(function() {
+	// shuffle drone array
+	shuffle(droneVids);
+	//find vimeo video
+	iframe = document.querySelector('iframe');
+	player = new Vimeo.Player(iframe);
+	// load random video
+	loadNewVideo(droneVids[0]);
+	// load new video when old video ended
+	player.on('ended', function() {
+		$(".vimeo-wrapper").hide();
+		// console.log("ended");
+		vidCounter++;
+		console.log(vidCounter);
+		// check if the whole array is already over, otherwise restart
+		if (vidCounter > droneVids.length - 1) {
+			vidCounter = 0;
+		}
+    loadNewVideo(droneVids[vidCounter]);
+		// $('.vimeo-wrapper').show();
+	});
+	player.on('play', function() {
+		setTimeout(function() {
+			$(".vimeo-wrapper").show();
+		}, 500);
+	});
+
+	$( "#dialog" ).dialog({
+    autoOpen: false,
+		maxWidth:600,
+    maxHeight: 500,
+    width: 600,
+    // height: 500,
+    modal: true,
+  });
+
+  $( ".logoContainer.info.title" ).on( "click", function() {
+    $( "#dialog" ).dialog( "open" );
+  });
+
+	// on click of the logo, start sound
+	$('.logoContainer.logo, .logoContainer.bottom-bar, .vimeo-wrapper').click(function() {
 		// audio...
 		$("#audioplayer")[0].play();
-		// the black video...
-		$('.fullscreenBgVideo').trigger('play');
-		// video shuffle function...
-		videoPlayerFunction();
-		// // grow the logo
-		// $('#logoContainer img').css({
-		// 	"max-width": "none",
-		// 	"max-height": "none",
-		// 	"min-width": "100%",
-		// 	"min-height": "100%",
-		// })
 		// fade out the logo
-		$( this ).delay(5000).fadeOut(5000);
+		$( '.logoContainer' ).fadeOut(5000);
 	});
 });
 
-//video shuffle function at beginning
-$.fn.shuffleChildren = function() {
-	$.each(this.get(), function(index, el) {
-			var $el = $(el);
-			var $find = $el.children();
-			$find.sort(function() {
-					return 0.5 - Math.random();
-			});
-			$el.empty();
-			$find.appendTo($el);
+function loadNewVideo(videoID){
+	player.loadVideo(videoID).then(function(id) {
+	}).catch(function(error) {
+			switch (error.name) {
+					case 'TypeError':
+							// the id was not a number
+							break;
+
+					case 'PasswordError':
+							// the video is password-protected and the viewer needs to enter the
+							// password first
+							break;
+
+					case 'PrivacyError':
+							// the video is password-protected or private
+							break;
+
+					default:
+							// some other error occurred
+							break;
+			}
 	});
-};
+}
 
-function videoPlayerFunction() {
-	//video index
-	function getCurrentVideoIndex( ) {
-		var video_links = $( '.videoPlaylist a' );
-		var current_link = $( '.videoPlaylist a.current-video' );
-		return video_links.index( current_link );
-	}
-
-	// play videos, preload next video
-	function playVideo( index ) {
-		allLinks[index].classList.add( 'current-video' );
-		currentVideo = index;
-		// source[2].src = videoDirectory + linkList[index] + '.ogv';
-		// source[1].src = videoDirectory + linkList[index] + '.webm';
-		source[0].src = videoDirectory + linkList[index] + '.mp4';
-		video.load();
-		video.play();
-
-		preloadNextVideo( );
-	}
-
-	function preloadNextVideo() {
-		nextVideo = currentVideo + 1;
-		if ( nextVideo >= linkNumber ) {
-			nextVideo = 0;
-		}
-		var nextSrc = videoDirectory + linkList[ nextVideo ] + '.mp4';
-		var req = new XMLHttpRequest( );
-		req.open('GET', nextSrc, true);
-		req.send();
-		console.log( nextVideo + ' / ' + linkNumber + ' ' + nextSrc );
-	}
-
-	//shuffle videos in html
-	$( '.videoPlaylist' ).shuffleChildren( );
-
-	//variables to play video
-	var videoPlayer = document.getElementById( 'videoPlayer' ),
-		video = videoPlayer.getElementsByClassName( 'fullscreenBgVideo' )[0],
-		playlist = videoPlayer.getElementsByClassName( 'videoPlaylist' )[0],
-		source = video.getElementsByTagName( 'source' ),
-		linkList = [],
-		videoDirectory = 'vidblack/',
-		currentVideo = getCurrentVideoIndex( ),
-		i, filename;
-	var allLinks = playlist.children; // shuffle(playlist.children);
-	var linkNumber = allLinks.length;
-
-	// // Save all video sources from playlist
-	for ( i = 0; i < linkNumber; i++ ) {
-		filename = allLinks[i].href;
-		linkList[i] = filename.match( /([^\/]+)(?=\.\w+$)/ )[0];
-	}
-
-	/**
-	 * Play next video
-	 */
-	video.addEventListener( 'ended', function () {
-
-		console.log( currentVideo );
-		allLinks[currentVideo].classList.remove( 'current-video' );
-		nextVideo = currentVideo + 1;
-		if ( nextVideo >= linkNumber ) {
-			nextVideo = 0;
-		}
-		playVideo( nextVideo );
-	} );
-
-	preloadNextVideo( );
+// shuffle array of vids
+function shuffle(a) {
+    var j, x, i;
+    for (i = a.length - 1; i > 0; i--) {
+        j = Math.floor(Math.random() * (i + 1));
+        x = a[i];
+        a[i] = a[j];
+        a[j] = x;
+    }
+    return a;
 }

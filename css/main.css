@@ -114,7 +114,7 @@ a:hover{
 /*logoContainer:    */
 /*——————————————————*/
 
-#logoContainer {
+#videoWrapper {
   /* background-color: #D1D0D1; */
   /* background-image: url("../img/bg1.png"); */
   background-size: cover;
@@ -128,12 +128,13 @@ a:hover{
   align-items: center;
   cursor: move;
 }
-
-#logoContainer > img {
+#videoWrapper > img {
   max-width: 60%;
   max-height: 60%;
 }
-
+.logo{
+  cursor: pointer;
+}
 .logoContainer.top-bar, .logoContainer.bottom-bar {
   width: calc(100% - 2em);
   display: flex;
@@ -146,6 +147,7 @@ a:hover{
 }
 .logoContainer.bottom-bar {
   margin-bottom: 1em;
+  /* padding-top: 70%; */
   /* border-top: 1.3px solid white; */
 }
 .logoContainer.info{
@@ -154,11 +156,14 @@ a:hover{
 .logoContainer.info.title{
   font-style: italic;
 }
+.logoContainer.info.title:hover{
+  text-decoration: underline;
+}
 .logoContainer.info.click{
   width: 100%;
   text-align: center;
   animation: blinker 4s linear infinite;
-
+  cursor: pointer;
 }
 .vimeo-wrapper {
   position: fixed;
@@ -184,6 +189,13 @@ a:hover{
   50% {
     opacity: 0;
   }
+}
+#dialog{
+  z-index: 20000;
+  border-radius: 0.5em;
+    background: white;
+    color: black;
+    padding: 1em;
 }
 /* .logoContainer.bottom {
   align-items: center;
