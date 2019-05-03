@@ -1,28 +1,41 @@
 var iframe;
 var player;
 var droneVids = [
-	// 304825753,
-	// 304824842,
-	// 304824964,
-	// 304824270,
-	// 304824383,
-	// 304824166,
-	// 304824656,
-	// 304827969,
+	304825753,
+	304824842,
+	304824964,
+	304824270,
+	304824383,
+	304824166,
+	304824656,
+	304827969,
 	304824436,
-	// 304824497,
-	// 304824580,
+	304824497,
+	304824580,
 	304824114,
-	// 304828072,
-	// 304825095,
-	// 304823871,
-	// 304823989,
-	// 304825196
+	304828072,
+	304825095,
+	304823871,
+	304823989,
+	304825196
 ]
+var tracks = [
+	"aud/Daniel_Mar2019_Master_rev1-001.wav",
+	"aud/Daniel_Mar2019_Master_rev1-002.wav",
+	"aud/Daniel_Mar2019_Master_rev1-003.wav",
+]; // List of Songs
 var vidCounter = 0;
+var selection = 0;
+
+var audioPlayer = document.getElementById("audioplayer"); // Get Audio Element
+audioPlayer.autoplay=true;
+audioPlayer.addEventListener("ended", selectSong); // Run function when song ends
 
 //when ready
 $( document ).ready(function() {
+	shuffle(tracks);
+	selectSong(); // Select initial song
+
 	// shuffle drone array
 	shuffle(droneVids);
 	//find vimeo video
@@ -46,17 +59,17 @@ $( document ).ready(function() {
 	player.on('play', function() {
 		setTimeout(function() {
 			$(".vimeo-wrapper").show();
-		}, 500);
+		}, 200);
 	});
 
-	$( "#dialog" ).dialog({
-    autoOpen: false,
-		maxWidth:600,
-    maxHeight: 500,
-    width: 600,
-    // height: 500,
-    modal: true,
-  });
+	// $( "#dialog" ).dialog({
+  //   autoOpen: false,
+	// 	maxWidth:600,
+  //   // maxHeight: 500,
+  //   width: 600,
+  //   // height: 500,
+  //   // modal: true,
+  // });
 
   $( ".logoContainer.info.title" ).on( "click", function() {
     $( "#dialog" ).dialog( "open" );
@@ -68,6 +81,7 @@ $( document ).ready(function() {
 		$("#audioplayer")[0].play();
 		// fade out the logo
 		$( '.logoContainer' ).fadeOut(5000);
+		$( '.vimeo-wrapper' ).fadeTo(0, 0.1).fadeTo(3000, 1)
 	});
 });
 
@@ -95,7 +109,7 @@ function loadNewVideo(videoID){
 	});
 }
 
-// shuffle array of vids
+// shuffle array
 function shuffle(a) {
     var j, x, i;
     for (i = a.length - 1; i > 0; i--) {
@@ -106,3 +120,13 @@ function shuffle(a) {
     }
     return a;
 }
+
+function selectSong(){
+	if (selection < tracks.length) {
+		audioPlayer.src = tracks[selection]; // Tell HTML the location of the new Song
+		selection += 1;
+	} else {
+		$('.videoWrapper').fadeOut(2000);
+	}
+}
+// player.play(); // Start Song
