@@ -156,6 +156,9 @@ a:hover{
 .logoContainer.info.title{
   font-style: italic;
 }
+.logoContainer.info.title:hover{
+  text-decoration: underline;
+}
 
 .logoContainer.info.click{
   width: 100%;
@@ -189,10 +192,26 @@ a:hover{
     opacity: 0;
   }
 }
-#dialog{
+.ui-dialog{
   z-index: 20000;
+  /* font-size: 0.9em; */
   border-radius: 0.5em;
-    background: white;
-    color: black;
-    padding: 1em;
+  background: white;
+  color: black;
+  padding: 1em;
+}
+.ui-dialog .ui-dialog-title{
+  font-weight: normal;
+  font-style: italic;
+  margin: 0 0 0.5em 0;
+}
+.ui-draggable .ui-dialog-titlebar{
+  padding: 0;
+}
+.ui-dialog .ui-dialog-content{
+  padding: 0;
+}
+p {
+  margin-block-start: 0;
+    margin-block-end: 0.5em;
 }

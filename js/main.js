@@ -75,6 +75,18 @@ $( document ).ready(function() {
 		$( '.logoContainer' ).fadeOut(5000);
 		$( '.vimeo-wrapper' ).fadeTo(0, 0.1).fadeTo(3000, 1)
 	});
+
+	//dialog box
+	$( "#dialog" ).dialog({
+		autoOpen: false,
+		width: $(window).width() * 0.55,
+		// maxWidth: 500
+	});
+	//opener
+	$( ".logoContainer info title" ).on( "click", function() {
+    $( "#dialog" ).dialog( "open" );
+  });
+
 });
 
 function loadNewVideo(videoID){
