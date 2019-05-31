@@ -215,3 +215,19 @@ p {
   margin-block-start: 0;
     margin-block-end: 0.5em;
 }
+
+@media (max-width: 1024px) {
+  html{
+    font-size: 1em;
+  }
+  .logoContainer.top-bar{
+    flex-direction: column-reverse;
+    align-items: flex-start;
+  }
+  .logoContainer.info.name{
+    padding-top: 0;
+  }
+  .logoContainer.info.title{
+    padding-bottom: 0;
+  }
+}
