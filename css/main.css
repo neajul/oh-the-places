@@ -230,4 +230,8 @@ p {
   .logoContainer.info.title{
     padding-bottom: 0;
   }
+  .logoContainer.logo>img{
+    width: calc(100% - 1em);
+    margin-left: 0.5em;
+  }
 }
