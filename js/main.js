@@ -20,21 +20,22 @@ var droneVids = [
 	304825196
 ]
 var tracks = [
-	"aud/Daniel_Mar2019_Master_rev1-001.wav",
-	"aud/Daniel_Mar2019_Master_rev1-002.wav",
-	"aud/Daniel_Mar2019_Master_rev1-003.wav",
+	"aud/Daniel_Mar2019_Master_rev1-001.mp3",
+	"aud/Daniel_Mar2019_Master_rev1-002.mp3",
+	"aud/Daniel_Mar2019_Master_rev1-003.mp3",
 ]; // List of Songs
 var vidCounter = 0;
 var selection = 0;
 
 var audioPlayer = document.getElementById("audioplayer"); // Get Audio Element
-audioPlayer.autoplay=true;
-audioPlayer.addEventListener("ended", selectSong); // Run function when song ends
 
 //when ready
 $( document ).ready(function() {
 	shuffle(tracks);
 	selectSong(); // Select initial song
+
+	audioPlayer.autoplay=true;
+	audioPlayer.addEventListener("ended", selectSong); // Run function when song ends
 
 	// shuffle drone array
 	shuffle(droneVids);
@@ -61,15 +62,6 @@ $( document ).ready(function() {
 			$(".vimeo-wrapper").show();
 		}, 200);
 	});
-
-	// $( "#dialog" ).dialog({
-  //   autoOpen: false,
-	// 	maxWidth:600,
-  //   // maxHeight: 500,
-  //   width: 600,
-  //   // height: 500,
-  //   // modal: true,
-  // });
 
   $( ".logoContainer.info.title" ).on( "click", function() {
     $( "#dialog" ).dialog( "open" );
@@ -123,10 +115,14 @@ function shuffle(a) {
 
 function selectSong(){
 	if (selection < tracks.length) {
+		console.log(tracks[selection]);
 		audioPlayer.src = tracks[selection]; // Tell HTML the location of the new Song
 		selection += 1;
 	} else {
-		$('.videoWrapper').fadeOut(2000);
+		console.log("music over!");
+		$( '.vimeo-wrapper' ).fadeOut(2000);
+		setTimeout(function() {
+			player.destroy();
+		}, 2000);
 	}
 }
-// player.play(); // Start Song

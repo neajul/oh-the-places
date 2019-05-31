@@ -115,8 +115,6 @@ a:hover{
 /*——————————————————*/
 
 #videoWrapper {
-  /* background-color: #D1D0D1; */
-  /* background-image: url("../img/bg1.png"); */
   background-size: cover;
   background-position: center;
   width: 100%;
@@ -132,6 +130,13 @@ a:hover{
   max-width: 60%;
   max-height: 60%;
 }
+.logoContainer.logo{
+  width: 100%;
+}
+.logoContainer.logo>img{
+  width: 50%;
+  margin-left: 25%;
+}
 .logo{
   cursor: pointer;
 }
@@ -142,13 +147,8 @@ a:hover{
   align-items: center;
   border-bottom: 1.3px solid white;
 }
-.logoContainer.top-bar {
-  /* border-bottom: 1.3px solid white; */
-}
 .logoContainer.bottom-bar {
   margin-bottom: 1em;
-  /* padding-top: 70%; */
-  /* border-top: 1.3px solid white; */
 }
 .logoContainer.info{
   padding: 1em 0.1em 0.5em 0.1em;
@@ -156,9 +156,7 @@ a:hover{
 .logoContainer.info.title{
   font-style: italic;
 }
-/* .logoContainer.info.title:hover{
-  text-decoration: underline;
-} */
+
 .logoContainer.info.click{
   width: 100%;
   text-align: center;
@@ -198,6 +196,3 @@ a:hover{
     color: black;
     padding: 1em;
 }
-/* .logoContainer.bottom {
-  align-items: center;
-} */
